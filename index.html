@@ -1,1 +1,57 @@
 
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TOT AI Asistan</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#101827;color:white;font-family:Arial}
+header{padding:20px;background:#19263b;text-align:center}
+h2{margin:0;color:#60a5fa}
+small{color:#9ca3af}
+#chat{height:70vh;overflow:auto;padding:16px}
+.msg{padding:12px;margin:10px 0;border-radius:12px;max-width:85%;line-height:1.5;white-space:pre-wrap}
+.bot{background:#263449}
+.user{background:#2563eb;margin-left:auto}
+footer{display:flex;gap:8px;padding:12px;background:#19263b}
+input{flex:1;min-width:0;padding:12px;border:0;border-radius:8px}
+button{background:#2563eb;color:white;border:0;border-radius:8px;padding:12px}
+</style>
+</head>
+<body>
+<header>
+<h2>TOT AI ASİSTAN</h2>
+<small>Kişisel Dijital Asistan</small>
+</header>
+<div id="chat">
+<div class="msg bot">Merhaba! Ben TOT AI Asistan. Sana nasıl yardımcı olabilirim?</div>
+</div>
+<footer>
+<input id="message" placeholder="Mesajını yaz...">
+<button onclick="send()">Gönder</button>
+</footer>
+<script>
+function add(text,type){
+const div=document.createElement("div");
+div.className="msg "+type;
+div.textContent=text;
+document.getElementById("chat").appendChild(div);
+div.scrollIntoView();
+}
+function send(){
+const input=document.getElementById("message");
+const text=input.value.trim();
+if(!text)return;
+add(text,"user");
+input.value="";
+add("Mesajın alındı. Yapay zekâ bağlantısı henüz kurulmadı.","bot");
+}
+document.getElementById("message").addEventListener("keydown",e=>{
+if(e.key==="Enter")send();
+});
+</script>
+</body>
+</html>
+  
